@@ -20,11 +20,21 @@ const images = [
   },
   {
     url: "src/assets/mens-circle.webp",
-    title: "",
+    title: "Mens Circle",
     NavLink: "/mens-circle",
     width: "100%",
   },
 ];
+
+// // Define LinkBehavior component
+// const LinkBehavior = forwardRef(function LinkBehavior(props, ref) {
+//   const { href, ...other } = props;
+//   // Map href (Material UI) -> to (react-router)
+//   return <RouterLink ref={ref} to={href} {...other} />;
+// });
+
+// // Set display name for LinkBehavior component
+// LinkBehavior.displayName = "LinkBehavior";
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: "relative",
@@ -96,34 +106,34 @@ export default function ButtonBaseDemo() {
       sx={{ display: "flex", flexWrap: "wrap", minWidth: 300, width: "100%" }}
     >
       {images.map((image) => (
-        // <LinkComponent key={image.NavLink} to={image.NavLink}>
-        <ImageButton
-          focusRipple
-          key={image.title}
-          style={{
-            width: image.width,
-          }}
-        >
-          <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
-          <ImageBackdrop className="MuiImageBackdrop-root" />
-          <Image>
-            <Typography
-              component="span"
-              variant="subtitle1"
-              color="inherit"
-              sx={{
-                position: "relative",
-                p: 4,
-                pt: 2,
-                pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
-              }}
-            >
-              {image.title}
-              <ImageMarked className="MuiImageMarked-root" />
-            </Typography>
-          </Image>
-        </ImageButton>
-        // </LinkComponent>
+        <Link key={image.NavLink} href={image.NavLink}>
+          <ImageButton
+            focusRipple
+            key={image.title}
+            style={{
+              width: image.width,
+            }}
+          >
+            <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
+            <ImageBackdrop className="MuiImageBackdrop-root" />
+            <Image>
+              <Typography
+                component="span"
+                variant="subtitle1"
+                color="inherit"
+                sx={{
+                  position: "relative",
+                  p: 4,
+                  pt: 2,
+                  pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
+                }}
+              >
+                {image.title}
+                <ImageMarked className="MuiImageMarked-root" />
+              </Typography>
+            </Image>
+          </ImageButton>
+        </Link>
       ))}
     </Box>
   );

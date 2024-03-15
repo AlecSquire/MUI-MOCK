@@ -1,16 +1,30 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
 import App from "./App.jsx";
-import "./index.css";
-import { useTheme } from "@mui/material/styles";
 import { ThemeProvider, createTheme } from "@mui/material";
+import { forwardRef } from "react";
+import { Link as RouterLink } from "react-router-dom";
 
-import { createRoot } from "react-dom/client";
+// You don't need to import LinkProps and useTheme if you're not using them
+// import { LinkProps, useTheme } from "@mui/material";
+
+// Ensure to import forwardRef from 'react' for proper usage
+// import { forwardRef } from 'react';
 
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
+
+// Define LinkBehavior component
+const LinkBehavior = forwardRef(function LinkBehavior(props, ref) {
+  const { href, ...other } = props;
+  // Map href (Material UI) -> to (react-router)
+  return <RouterLink ref={ref} to={href} {...other} />;
+});
+
+// Set display name for LinkBehavior component
+LinkBehavior.displayName = "LinkBehavior";
 
 export const themeOptions = createTheme({
   palette: {
@@ -90,6 +104,14 @@ export const themeOptions = createTheme({
     },
   },
   components: {
+    defaultProps: {
+      component: LinkBehavior,
+    },
+  },
+  MuiButtonBase: {
+    defaultProps: {
+      LinkComponent: LinkBehavior,
+    },
     MuiSwitch: {
       styleOverrides: {
         root: {
@@ -143,8 +165,9 @@ export const themeOptions = createTheme({
     },
   },
 });
-
-ReactDOM.createRoot(document.getElementById("root")).render(
+// Use createRoot to render your app
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
   <React.StrictMode>
     <ThemeProvider theme={themeOptions}>
       <App />
