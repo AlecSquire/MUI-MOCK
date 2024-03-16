@@ -5,12 +5,15 @@ import { ThemeProvider, createTheme } from "@mui/material";
 import { forwardRef } from "react";
 import { Link as RouterLink } from "react-router-dom";
 
+<<<<<<< Updated upstream
 // You don't need to import LinkProps and useTheme if you're not using them
 // import { LinkProps, useTheme } from "@mui/material";
 
 // Ensure to import forwardRef from 'react' for proper usage
 // import { forwardRef } from 'react';
 
+=======
+>>>>>>> Stashed changes
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
