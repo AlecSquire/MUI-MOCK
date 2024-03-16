@@ -6,5 +6,9 @@ import { Typography, Avatar } from "@mui/material";
 import { Button, CardActionArea, CardActions } from "@mui/material";
 
 export default function WorkShops() {
-  return <></>;
+  return (
+    <>
+      <Typography variant="h1"> this is the workshop page </Typography>
+    </>
+  );
 }

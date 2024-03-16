@@ -8,7 +8,7 @@ import { Button, CardActionArea, CardActions } from "@mui/material";
 export default function MentorShip() {
   return (
     <>
-      <Typography variant="h1"> hello </Typography>
+      <Typography variant="h1"> this is the mentorship page </Typography>
     </>
   );
 }
